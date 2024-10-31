@@ -118,18 +118,4 @@ jobs:
         "$CHROMEAPP" --version
         export DISPLAY=:99
         chromedriver --disable-dev-shm-usage --no-sandbox --url-base=/wd/hub &
-        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # disable headless mode
-        # Wait for Xvfb
-        echo "Waiting for X Server $DISPLAY to be available"
-        MAX=120 # About 60 seconds
-        CT=0
-        while ! xdpyinfo >/dev/null 2>&1; do
-            sleep 0.50s
-            CT=$(( CT + 1 ))
-            if [ "$CT" -ge "$MAX" ]; then
-                echo "FATAL: $0: Gave up waiting for X server $DISPLAY"
-                exit 11
-            fi
-        done
-        echo "X is available"
-        node_modules/.bin/ts-node $GITHUB_WORKSPACE/__tests__/chromedriver.ts
+        sudo xvfb-run node_modules/.bin/ts-node $GITHUB_WORKSPACE/__tests__/chromedriver.ts
