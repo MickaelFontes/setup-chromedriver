@@ -118,4 +118,4 @@ jobs:
         "$CHROMEAPP" --version
         export DISPLAY=:99
         chromedriver --disable-dev-shm-usage --no-sandbox --url-base=/wd/hub &
-        sudo xvfb-run node_modules/.bin/ts-node $GITHUB_WORKSPACE/__tests__/chromedriver.ts
+        sudo xvfb-run -s "-ac -screen 0 1280x1024x24" node_modules/.bin/ts-node $GITHUB_WORKSPACE/__tests__/chromedriver.ts
