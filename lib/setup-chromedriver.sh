@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eo pipefail
+set -exo pipefail
 
 CURL="curl --silent --location --fail --retry 10"
 JSON_URL=https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
