@@ -1,5 +1,5 @@
 Param(
-    [string]$version
+    [string]$version,
     [string]$chromeapp
 )
 
